@@ -35,3 +35,93 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+
+seeds:
+  db_alenusa_mysql:
+    +batch_size: 100
+    +quote_columns: true
+    fct_orders:
+      +column_types:
+        net_value: float
+        gross_weight: float
+        cs_requested: float
+        cs_shipped: float
+        sales_order: varchar(255)
+        customer_po: varchar(255)
+        invoice: varchar(255)
+        outbound_delivery: varchar(255)
+        mx_purchase_ord: varchar(255)
+        confirmation: varchar(255)
+        obd: varchar(255)
+        sku: varchar(255)
+        plant: varchar(255)
+        edi_date_week_start: date
+        edi_date_week_end: date
+
+    fct_iri_costco_weekly_warehouse_sales:
+      +column_types:
+        week_ending: date
+        dollar_sales: float
+        unit_sales: float
+        non_promoted_dollars: float
+        non_promoted_units: float
+        promoted_dollars: float
+        promoted_units: float
+        avg_price_per_unit: float
+        avg_promoted_price: float
+        dollars_per_wh_per_week: float
+        units_per_wh_per_week: float
+        avg_dollar_sales_per_wh_selling: float
+        avg_unit_sales_per_wh_selling: float
+        coupon_dollars: float
+        coupon_units: float
+        total_discount_dollars: float
+        warehouses_selling: float
+        inventory_on_hand: float
+        avg_inventory_per_day: float
+        weeks_of_supply: float
+        on_order: float
+        in_transit: float
+
+    fct_nielsen_costco_weekly_sales:
+      +column_types:
+        upc: varchar(255)
+        week_ending: date
+        dollar_sales: float
+        unit_sales: float
+        stores_selling: float
+
+    dim_costco_clubs:
+      +column_types:
+        store_open_date: date
+        zip_code: varchar(255)
+        warehouse_code: varchar(255)
+        latitude: float
+        longitude: float
+
+    fct_costco_weather:
+      +column_types:
+        week_ending: date
+        temp_max: float
+        temp_min: float
+        temp_avg: float
+        temp_departure_from_normal: float
+        precipitation_total_in: float
+        precipitation_daily_avg_in: float
+        snowfall_total_in: float
+        snowfall_daily_avg_in: float
+
+    dim_costco_items:
+      +column_types:
+        upc: varchar(255)
+        item_number: varchar(255)
+        vendor_code: varchar(255)
+        count: float
+        concentration_level: float
+        total_count: float
+        total_ounces: float
+
+    fct_spectra_retailers:
+      +column_types:
+        store_number: varchar(255)
+        zip_code: varchar(255)
