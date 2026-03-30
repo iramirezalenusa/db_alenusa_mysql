@@ -7,7 +7,7 @@ python -m venv db_venv
 .\db_venv\Scripts\Activate.ps1
 
 # dbt install
-pip install dbt-core dbt-postgres
+pip install dbt-core dbt-mysql
 pip install --upgrade mashumaro
 dbt init
 
